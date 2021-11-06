@@ -1,0 +1,18 @@
+{% include "partials/header.html" %}
+<div id="r_box">
+  <div style="margin-top: 25px;">
+    <div style="float:left;">
+      <h1 style="color:black;text-align:center;">Create</h1>
+    </div>
+    <div style="margin-left:auto;margin-right:auto;float:left">
+      <div style="margin-left: 10%;">
+        <form action="/posts" method="POST">
+          <input type="text" placeholder="Title of Post" name="title" style="width:500px;height:40px; border-radius: 15px;font-family: 'Roboto Condensed', sans-serif;">
+          <textarea type="text" placeholder="What do you want to say?" rows="5" name="content" style="width:500px;height:200px;border-radius: 15px;font-family: 'Roboto Condensed', sans-serif;"></textarea>
+          <input type="submit" style="width:532.5px;border-radius: 15px;font-family: 'Roboto Condensed', sans-serif;">
+        </form>  
+      </div>
+    </div>
+  </div>
+</div>
+{% include "partials/footer.html" %}

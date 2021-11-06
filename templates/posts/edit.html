@@ -1,0 +1,17 @@
+{% include "partials/header.html" %}
+
+<div id="index_background">
+    <div id="r_box">
+        <div class="col-12 vertical-center text-center">
+            <h1 class="text-white" style="text-align:center;">Edit A Post!<h1>
+        </div>
+        <form action="/posts/{{post[0][0]}}" method="POST">
+            <input type="text" value="{{post[0][1]}}" name="title">
+            <textarea type="text" rows="5" name="content">{{post[0][2]}}</textarea>
+            <input type="hidden" name="_method" value="PUT" />
+            <input type="submit">
+        </form>
+    </div>
+</div>
+<!-- 0 - id, 1 - title, 2 - content -->
+{% include "partials/footer.html" %}

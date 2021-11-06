@@ -1,0 +1,21 @@
+{% include "partials/header.html" %}
+{% for post in posts %}
+  <div class="card" style="height:300px;width:80%;border-radius:35px; margin:auto; background-color: var(--post-color); color: black; text-align:center; margin-bottom: 25px;" style="width: 18rem;">
+    <div class="card-body">
+      <h1 class="card-title"><a href="/posts/{{post[0]}}" style="text-decoration:none; color:black;">{{ post[1] }}</a></h1>
+      {%if post[2]|length>=100%}
+      <h3 class="card-text">{{(post[2])[0:100]}}...</h3>
+      {%else%}
+      <h3 class="card-text">{{(post[2])}}</h1>
+      {%endif%}
+      {%if user_id==post[3]%}
+        <form method="POST" style="display: inline;" action="/posts/{{post[0]}}">
+          <input type="hidden" name="_method" value="DELETE" />
+          <button type="submit" class="fas fa-trash-alt btn btn-danger"></button>
+        </form>
+      <a style="display: inline;" href="/posts/{{ post[0] }}/edit"><i class="fas fa-edit btn btn-success"></i></a>
+      {% endif %}
+    </div>
+  </div>
+    {% endfor %}
+{% include "partials/footer.html" %}

@@ -1,0 +1,14 @@
+{% include "partials/header.html" %}
+
+<div id="r_box" style="width: 80% !important;">
+  <div style="text-align:center;">
+      <h1 style="color: black;">Create Account!<h1>
+  </div>
+  <form action="/register" method="POST">
+      <input type="text" placeholder="Username" name="username">
+      <input type="password" placeholder="Password" name="password">
+      <input type="submit">
+  </form>
+</div>
+
+{% include "partials/footer.html" %}

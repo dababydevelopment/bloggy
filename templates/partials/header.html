@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<link rel="shortcut icon" type="image/png" href="/img/favicon3.png">
+	<title>Bloggy</title>
+	<link href="/css/style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+</head>
+
+<body class="dark-theme">
+	{% if username%}
+	<div class="sidebar-container visible" id="sidebar-container">
+
+		<div class="sidebar" id="sidebar">
+			<div class="hamburger" id="hamburger" onclick="sidebar();">
+				<div class="line" id="lineTop2"></div>
+				<div class="line" id="lineBottom2"></div>
+			</div>
+
+			<a href="/posts/create"><button>
+					<ion-icon name="add"></ion-icon> NEW POST
+				</button></a>
+
+			<div class="section">
+
+				<div class="tab active" id="home" onclick="window.location.href='/'; nav_click('home');">
+					<ion-icon name="home"></ion-icon>
+					<a>Home</a>
+				</div>
+
+
+				<div class="tab"  id="layers" onclick="window.location.href='/posts'; nav_click('layers');">
+					<ion-icon name="layers"></ion-icon>
+					<a>Explore</a>
+				</div>
+
+			</div>
+
+			<div class="section bottom">
+
+				<div class="tab">
+					<ion-icon name="settings-outline"></ion-icon>
+				</div>
+
+				<label class="switch">
+					<input type="checkbox" id="theme-toggle">
+					<span class="slider round"></span>
+				</label>
+
+			</div>
+		</div>
+	</div>
+
+	<section class="main" id="main">
+		<div class="top">
+			<div class="hamburger" id="hamburger" onclick="sidebar()">
+				<div class="line" id="lineTop1"></div>
+				<div class="line" id="lineBottom1"></div>
+			</div>
+
+			<ion-icon name="calendar-number-outline" class="calendar"></ion-icon>
+
+			<div class="search-box">
+				<input type="text" placeholder="Search...">
+				<ion-icon name="search"></ion-icon>
+			</div>
+
+			<div class="account" onclick="window.location.href='/profile'">
+				<p>{{username}}</p>
+
+				<div class="notification">0</div>
+				<ion-icon name="person-circle-outline"></ion-icon>
+			</div>
+		</div>
+
+		<div class="content" id="content">
+			{%else%}
+			<div class="sidebar-container visible" id="sidebar-container">
+
+				<div class="sidebar" id="sidebar">
+					<div class="hamburger" id="hamburger" onclick="sidebar();">
+						<div class="line" id="lineTop2"></div>
+						<div class="line" id="lineBottom2"></div>
+					</div>
+
+					<div class="section">
+
+						<div class="tab active" id="home" onclick="window.location.href='/'; nav_click('home');">
+							<ion-icon name="home"></ion-icon>
+							<a href="/">Home</a>
+						</div>
+
+						<div class="tab" id="layers" onclick="window.location.href='/posts'; nav_click('layers');">
+							<ion-icon name="layers"></ion-icon>
+							<a href="/posts">Explore</a>
+						</div>
+
+						<div class="tab" id="login" onclick="window.location.href='/login'; nav_click('login');">
+							<ion-icon name="log-in"></ion-icon>
+							<a>Login</a>
+						</div>
+
+						<div class="tab" id="register" onclick="window.location.href='/register'; nav_click('register');">
+							<ion-icon name="person-add"></ion-icon>
+							<a>Register</a>
+						</div>
+
+					</div>
+
+					<div class="section bottom">
+
+						<div class="tab">
+							<ion-icon name="settings-outline"></ion-icon>
+						</div>
+		
+						<label class="switch">
+							<input type="checkbox" id="theme-toggle">
+							<span class="slider round"></span>
+						</label>
+		
+					</div>
+				</div>
+			</div>
+
+			<section class="main" id="main">
+				<div class="top">
+					<div class="hamburger" id="hamburger" onclick="sidebar()">
+						<div class="line" id="lineTop1"></div>
+						<div class="line" id="lineBottom1"></div>
+					</div>
+
+					<ion-icon name="calendar-number-outline" class="calendar"></ion-icon>
+
+					<div class="search-box">
+						<form action="/posts/search" method="GET" style="width: 100%;">
+							<input type="text" name="query" placeholder="Search" value="{{value}}" style="display: inline-block;width:80%;">
+							<label style="display: inline-block;">
+								<input style="display: none;" type="submit">
+								<ion-icon name="search"></ion-icon>
+							</label>
+						</form>
+					</div>
+
+					<div class="account" onclick="window.location.href='/'">
+						<p>Guest</p>
+
+						<div class="notification">0</div>
+						<ion-icon name="person-circle-outline"></ion-icon>
+					</div>
+				</div>
+
+				<div class="content" id="content">
+					{%endif%}

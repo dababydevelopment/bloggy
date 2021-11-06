@@ -1,0 +1,16 @@
+{% include "partials/header.html" %}
+
+<div id="index_background">
+    <div id="r_box">
+        <div class="col-12 vertical-center text-center">
+            <h1 class="text-white">Edit A Comment!<h1>
+        </div>
+        <form action="/posts/{{ id }}/comments/{{ comment[0][0] }}" method="POST">
+            <textarea type="text" rows="5" name="comment">{{ comment[0][2] }}</textarea>
+            <input type="hidden" name="_method" value="PUT" />
+            <input type="submit">
+        </form>
+    </div>
+</div>
+
+{% include "partials/footer.html" %}

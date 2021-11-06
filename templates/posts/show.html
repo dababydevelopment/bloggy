@@ -1,0 +1,36 @@
+{% include "partials/header.html" %}
+
+<div class="container">
+    <h1 class="text-center" style="color:white;" >{{post[0][1]}}</h1>
+    <hr />
+    <p style="font-size: 27px;">{{post[0][2]}}</p>
+    <!--
+    [img] Username
+    Comment
+    -->
+    <form style="width: 100%; text-align: center;" action="/posts/{{post[0][0]}}/comments" method="POST" >
+        <input style="display: inline-block; width: 70%; border-radius:5px;" type="text" placeholder="Your Comment" name="comment">
+        <input style="display: inline-block; width: 25%; border-radius:5px;" type="submit" >
+    </form>    
+    {%for comment in comments%}
+        <div class="row"> <!-- Comment Display-->
+            <div id="comment_box">
+                <div class="col-4">
+                    <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 17px;  color: white;">{{comment[1]}}</h3>
+                </div>
+                <div class="col-4">
+                    <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 17px; color: white;" class="text-white">{{comment[2]}}</h3>
+                </div>
+                <div class="col-4">
+                    <a style="display: inline;" href="/posts/{{ post[0][0] }}/comments/{{ comment[0] }}/edit"><i class="fas fa-edit btn btn-success"></i></a>
+                    <form method="POST" style="display: inline;" action="/posts/{{post[0][0]}}/comments/{{ comment[0] }}">
+                        <input type="hidden" style="float:left;" name="_method" value="DELETE" />
+                        <button type="submit" class="fas fa-trash-alt btn btn-danger">
+                    </form>
+                </div>
+            </div>  
+        </div>
+    {%endfor%}
+</div>
+
+{% include "partials/footer.html" %}
